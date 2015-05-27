@@ -1,4 +1,4 @@
-Items.allow({
+Jobs.allow({
   'insert': function(userId, doc) {
     return userId;
   },

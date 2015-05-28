@@ -4,11 +4,15 @@
       <h1>Welcome to Visual Analytics</h1>
     </div>
     <p>
-      <ul class="list-group">
-        {{#each items}}
-            <li class="list-group-item">{{ name }} <span class="label label-default">{{ rating }}</span></li>
-        {{/each}}
-      </ul>
+      {{#if currentUser}}
+        <ul class="list-group">
+          {{#each items}}
+              <li class="list-group-item">{{ name }} <span class="label label-default">{{ rating }}</span></li>
+          {{/each}}
+        </ul>
+      {{else}}
+        Please sign in to continue.
+      {{/if}}
     </p>
   </div>
 </template>

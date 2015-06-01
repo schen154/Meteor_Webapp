@@ -5,17 +5,36 @@
     </div>
     <p>
       {{#if currentUser}}
-        <ul class="list-group">
-          {{#each items}}
-              <li class="list-group-item">{{ name }} <span class="label label-default">{{ rating }}</span></li>
-          {{/each}}
-        </ul>
+        <table class="list-group table table-striped table-bordered">
+          <thead>
+            <tr>
+                <th>Job Name</th>
+                <th>Job Owner</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Sharing</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each items}}
+              <tr>
+                  <td>string</td>
+                  <td>string</td>
+                  <td>string (since date is not purely numerical, 05/31/2015, has the '/' sign)</td>
+                  <td>string</td>
+                  <td>string</td>
+              </tr>
+
+            {{/each}}
+          </tbody>
+        </table>
+
+
       {{else}}
         Please sign in to continue.
       {{/if}}
     </p>
-  </div>
+    </div>
 </template>
-
 
 

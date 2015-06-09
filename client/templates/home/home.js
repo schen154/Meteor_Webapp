@@ -3,7 +3,7 @@ Template.home.rendered = function() {
 };
 Template.home.events({
     'click #slide-menu': function(){
-        $('.list-group').fadeOut(10);
+        $('.list-group').fadeOut();
         $('.mini-menu').fadeIn();
     },
     'click .mini-menu': function(){

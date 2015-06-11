@@ -1,6 +1,6 @@
 {
   "production" : {
-    "testing" : {
+    "twitter" : {
       "oauth_key" : "<oauth_key>",
       "oauth_secret" : "<oauth_secret>",
       "api_key" : "<api_key>"

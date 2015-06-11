@@ -20,16 +20,20 @@
                         <i class="fa fa-times"></i>
                         </span>
                         </span>
-                          <a href="/home/{{url}}" class="list-group-item">Enter URL</a>
-                          <a href="/home/{{select}}" class="list-group-item">Specify output/ignored</a>
-                          <a href="#" class="list-group-item">Algorithm Parameters</a>
-                          <a href="#" class="list-group-item">Review Inputs</a>
-                          <a href="#" class="list-group-item">Job Monitor</a>
-                          <a href="#" class="list-group-item">Results</a>
-                      </div>
-                      </div>
 
+                          <a href="{{pathFor route='url'}}" class="list-group-item">Enter URL</a>
+                          <a href="{{pathFor route='select'}}" class="list-group-item">Specify output/ignored</a>
+                          <a href="{{pathFor route='parameters'}}" class="list-group-item">Algorithm Parameters</a>
+                          <a href="{{pathFor route='review'}}" class="list-group-item">Review Inputs</a>
+                          <a href="{{pathFor route='monitor'}}" class="list-group-item">Job Monitor</a>
+                          <a href="{{pathFor route='results'}}" class="list-group-item">Results</a>
+                      </div>
+                      </div>
                   <div class="col-md-10">
+                      <!--if-->
+
+
+
                       <table class="table table-striped table-bordered">
                           <thead>
                           <tr>
@@ -53,6 +57,7 @@
                           </tbody>
                       </table>
                   </div>
+
               </div>
           </div>
 

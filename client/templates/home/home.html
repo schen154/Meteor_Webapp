@@ -1,8 +1,10 @@
 <template name="home">
+  <div class="container-fluid">
   <div class="template-home">
     <div class="page-header">
       <h1>Welcome to Visual Analytics</h1>
     </div>
+  </div>
 
     {{#if currentUser}}
         <div class="container-fluid">
@@ -23,9 +25,9 @@
                           <a href="#" id='url' class="list-group-item" >Enter URL</a>
                           <a href="#" id='select' class="list-group-item">Specify output/ignored</a>
                           <a href="#" id='parameters' class="list-group-item">Algorithm Parameters</a>
-                          <a href="{{pathFor 'review'}}" id='review' class="list-group-item">Review Inputs</a>
-                          <a href="{{pathFor 'monitor'}}" id='monitor' class="list-group-item">Job Monitor</a>
-                          <a href="{{pathFor 'results'}}" id='results'  class="list-group-item">Results</a>
+                          <a href="#" id='review' class="list-group-item">Review Inputs</a>
+                          <a href="#" id='monitor' class="list-group-item">Job Monitor</a>
+                          <a href="#" id='results'  class="list-group-item">Results</a>
                     </div>
                 </div>
 
@@ -40,7 +42,7 @@
         {{else}}
           Please sign in to continue.
     {{/if}}
-  </div>
+</div>
 </template>
 
 

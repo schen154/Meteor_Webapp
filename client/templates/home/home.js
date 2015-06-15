@@ -11,18 +11,18 @@ Template.home.events({
 
     },
 
-    'click .list-group-item': function(){
-            Session.set('step', $(this)._id);
+    'click .list-group-item': function(event){
+        Session.set('step', $(event.target).attr('id'));
     }
 
 });
 
 Template.home.helpers({
     whichOne: function () {
-        return Template[Session.get('step')]
+        return Template[Session.get('step')];
         // note that we return a Template object, not a string
     }
-})
+});
 
 
 

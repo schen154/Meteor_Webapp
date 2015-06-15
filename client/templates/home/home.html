@@ -1,48 +1,44 @@
 <template name="home">
-  <div class="container-fluid">
-  <div class="template-home">
-    <div class="page-header">
-      <h1>Welcome to Visual Analytics</h1>
+    <div class="template-home">
+        <div class="page-header">
+            <h1>Welcome to Visual Analytics</h1>
+        </div>
     </div>
-  </div>
 
     {{#if currentUser}}
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="col-md-2 sidebar">
-                    <div class="mini-menu">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </div>
-                    <div class="list-group">
-                        <span href="#" class="list-group-item active">
+        <div class="row-fluid">
+            <div class="col-md-2 sidebar">
+                <div class="mini-menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
+                <div class="list-group">
+                    <span href="#" class="list-group-item active">
                         Menu
                         <span class="pull-right" id="slide-menu">
-                        <i class="fa fa-times"></i>
+                            <i class="fa fa-times"></i>
                         </span>
-                        </span>
-                          <a href="#" id='url' class="list-group-item" >Enter URL</a>
-                          <a href="#" id='select' class="list-group-item">Specify output/ignored</a>
-                          <a href="#" id='parameters' class="list-group-item">Algorithm Parameters</a>
-                          <a href="#" id='review' class="list-group-item">Review Inputs</a>
-                          <a href="#" id='monitor' class="list-group-item">Job Monitor</a>
-                          <a href="#" id='results'  class="list-group-item">Results</a>
-                    </div>
+                    </span>
+                    <a href="#" id='url' class="list-group-item" >Enter URL</a>
+                    <a href="#" id='select' class="list-group-item">Specify output/ignored</a>
+                    <a href="#" id='parameters' class="list-group-item">Algorithm Parameters</a>
+                    <a href="#" id='review' class="list-group-item">Review Inputs</a>
+                    <a href="#" id='monitor' class="list-group-item">Job Monitor</a>
+                    <a href="#" id='results'  class="list-group-item">Results</a>
                 </div>
+            </div>
 
-                <div class="col-md-10">
+            <div class="col-md-10">
 
-                    {{>whichOne}}
+                {{>whichOne}}
 
-                </div>
             </div>
         </div>
 
         {{else}}
-          Please sign in to continue.
-    {{/if}}
-</div>
+            Please sign in to continue.
+        {{/if}}
 </template>
 
 

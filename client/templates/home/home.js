@@ -19,7 +19,7 @@ Template.home.events({
 
 Template.home.helpers({
     whichOne: function () {
-        return Template[Session.get('step')];
+        return Template[(Session.get('step') || 'url')];
         // note that we return a Template object, not a string
     }
 });

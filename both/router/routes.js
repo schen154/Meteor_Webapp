@@ -14,7 +14,7 @@ Router.route('/parameters', function () {
 });
 
 Router.route('/review', function () {
-  this.render('reveiw');
+  this.render('review');
 });
 
 Router.route('/monitor', function () {

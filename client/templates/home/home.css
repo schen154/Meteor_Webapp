@@ -1,15 +1,3 @@
-.template-home{
-    width: 100%;
-    height: 100%;
-}
-
-body{
-    margin: 0px;
-    background-color: grey;
-}
-
-
-
 .mini-menu{
     display:none;
     background-color: rgba(0, 0, 0, 0);

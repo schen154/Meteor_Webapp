@@ -1,21 +1,22 @@
 <!--url-->
 <template name="url">
+    <div id="heading" class="h3">Enter URL</div>
     <div>
-        <form class="form-horizontal">
+        <form>
             <div class="form-group">
-                <label class="col-md-5 control-label">Specify url where the data can be obtained</label>
-                <div class="col-md-7">
+                <div><label class="control-label">Specify url where the data can be obtained</label></div>
+                <div>
                     <input type="url" class="form-control" id="inputData">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-5 control-label">Specify url where the metadata can be obtained.</label>
-                <div class="col-md-7">
+                <div><label class="control-label">Specify url where the metadata can be obtained.</label></div>
+                <div>
                     <input type="url" class="form-control" id="inputMetadata">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-offset-5 col-md-7">
+                <div>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </div>
             </div>
@@ -29,9 +30,9 @@
 
 <!--select-->
 <template name="select">
-    <form>
-    <form class="form-horizontal">
-        <div class="form-group">
+    <div id="heading" class="h3">Select Outputs/Ignored</div>
+    <form class="form-horizontal col-md-4">
+        <div class="form-group form-group-lg">
             <label class="control-label">Prediction Type</label>
             <div class="radio">
                 <div>
@@ -48,83 +49,83 @@
                 </div>
             </div>
         </div>
-    </form>
-    <div id="features">
-        <form>
-            <div class="form-group">
+        <div id="features">
+            <div class="form-group form-group-lg">
                 <label>Ignored Features</label>
                 <div>
-                <select class="select" data-placeholder="Select Ignored Features" multiple>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                    <option value="6">Option 6</option>
-                    <option value="7">Option 7</option>
-                    <option value="8">Option 8</option>
-                    <option value="9">Option 9</option>
-                    <option value="10">Option 10</option>
-                </select>
+                    <select class="select" data-placeholder="Select Ignored Features" multiple>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="4">Option 4</option>
+                        <option value="5">Option 5</option>
+                        <option value="6">Option 6</option>
+                        <option value="7">Option 7</option>
+                        <option value="8">Option 8</option>
+                        <option value="9">Option 9</option>
+                        <option value="10">Option 10</option>
+                    </select>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group form-group-lg">
                 <label>Output Feature</label>
                 <div>
-                <select class="select" data-placeholder="Select Output Feature">
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                    <option value="6">Option 6</option>
-                    <option value="7">Option 7</option>
-                    <option value="8">Option 8</option>
-                    <option value="9">Option 9</option>
-                    <option value="10">Option 10</option>
-                </select>
+                    <select class="select" data-placeholder="Select Output Feature">
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="4">Option 4</option>
+                        <option value="5">Option 5</option>
+                        <option value="6">Option 6</option>
+                        <option value="7">Option 7</option>
+                        <option value="8">Option 8</option>
+                        <option value="9">Option 9</option>
+                        <option value="10">Option 10</option>
+                    </select>
                 </div>
             </div>
-        </form>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        <div class="form-group form-group-lg">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
     </form>
 </template>
 
 
 
 
+
 <!--algorithm parameters-->
 <template name="parameters">
-
+    <div id="heading" class="h3">Enter Algorithm Parameters</div>
     <form class="form-horizontal">
         <div class="form-group form-group-lg">
-            <label class="col-md-2 control-label">Number</label>
+            <label class="col-md-1 control-label">Number</label>
             <div class="col-md-3">
                 <input type="number" class="parameters" min="0" max="300">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-md-2 control-label">Number</label>
+            <label class="col-md-1 control-label">Number</label>
             <div class="col-md-3">
                 <input type="number" class="parameters" min="0" max="300">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-md-2 control-label">Number</label>
+            <label class="col-md-1 control-label">Number</label>
             <div class="col-md-3">
                 <input type="number" class="parameters" min="0" max="300">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-md-2 control-label">Number</label>
+            <label class="col-md-1 control-label">Number</label>
             <div class="col-md-3">
                 <input type="number" class="parameters" min="0" max="300">
             </div>
         </div>
         <!--radio buttons-->
-        <div class="form-group">
-            <label class="col-md-2 control-label">Choose One</label>
+        <div class="form-group form-group-lg">
+            <label class="col-md-1 control-label">Choose One</label>
             <div class="radio col-md-4">
                 <div>
                 <label>
@@ -157,15 +158,15 @@
         </div>
 
 
-        <div class="form-group">
-            <label class="col-md-2 control-label">Notes</label>
+        <div class="form-group form-group-lg">
+            <label class="col-md-1 control-label">Notes</label>
             <div class="col-md-7">
                 <input type="text" class="form-control" placeholder="Extra Notes">
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-2">
+        <div class="form-group form-group-lg">
+            <div class="col-md-offset-1 col-md-2">
                 <button type="submit" class="btn btn-default">Submit</button>
             </div>
         </div>
@@ -176,15 +177,19 @@
 
 
 
-
 <!--review-->
 <template name="review">
+    <div id="heading" class="h3">Review Inputs</div>
     <div class="row">
-    <div class="col-md-offset-1">
-    <button type="button" id="submit" data-loading-text="Submitting..." class="btn btn-primary" autocomplete="off">
-        Submit
-    </button>
-    </div>
+        <form>
+            <div class="form-group form-group-lg">
+                <div class="col-md-2">
+                    <button type="button" id="submit" data-loading-text="Submitting..." class="btn btn-primary" autocomplete="off">
+                    Submit
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -196,6 +201,7 @@
 
 <!--monitor-->
 <template name="monitor">
+    <div id="heading" class="h3">Job Monitor</div>
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -225,27 +231,30 @@
 
 
 
-
-
 <!--results-->
 <template name="results">
+    <div id="heading" class="h3">View Results</div>
     <div class="row">
-        <div class="col-md-2">
-            <button type="button" id="view" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
-                View Logs
-            </button>
-        </div>
+        <form>
+            <div class="form-group form-group-lg">
+                <div class="col-md-2">
+                    <button type="button" id="view" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                        View Logs
+                    </button>
+                </div>
 
-        <div class="col-md-2">
-            <button type="button" id="copy" data-loading-text="Copying..." class="btn btn-primary" autocomplete="off">
-                Copy to Box
-            </button>
-        </div>
+                <div class="col-md-2">
+                    <button type="button" id="copy" data-loading-text="Copying..." class="btn btn-primary" autocomplete="off">
+                        Copy to Box
+                    </button>
+                </div>
 
-        <div class="col-md-2">
-            <button type="button" id="error" data-loading-text="Reporting..." class="btn btn-primary" autocomplete="off">
-                Report errors
-            </button>
-        </div>
+                <div class="col-md-2">
+                    <button type="button" id="error" data-loading-text="Reporting..." class="btn btn-primary" autocomplete="off">
+                        Report errors
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </template>

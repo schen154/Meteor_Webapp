@@ -1,4 +1,14 @@
 #features{
     padding-top:20px;
+}
+#content{
+    padding:0px 30px 30px 30px;
+}
 
+#heading{
+    padding-bottom:20px;
+}
+
+#inputData, #inputMetadata{
+    width:60%;
 }

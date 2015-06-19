@@ -9,3 +9,14 @@
     width:60%;
 }
 
+p {
+    text-align: center;
+    color: #fff;
+    vertical-align: middle;
+    display: none;
+    line-height: 40px;
+}
+
+.button:hover > p {
+    display: block;
+}

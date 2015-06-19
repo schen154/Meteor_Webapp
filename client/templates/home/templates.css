@@ -1,22 +1,14 @@
-#features{
-    padding-top:20px;
-}
+/**for content to the right of the sidebar*/
 #content{
     padding:0px 30px 30px 30px;
 }
 
+/**for url input*/
 #inputData, #inputMetadata{
     width:60%;
 }
 
-p {
-    text-align: center;
-    color: #fff;
-    vertical-align: middle;
-    display: none;
-    line-height: 40px;
-}
-
-.button:hover > p {
-    display: block;
+/**for the modals at the monitor*/
+.modal{
+    padding-top:15%;
 }

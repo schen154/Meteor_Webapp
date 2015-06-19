@@ -31,7 +31,6 @@
 
 
 
-
 <!--------------select______outputs/inputs--------------->
 <template name="select">
     <div class="page-header">
@@ -190,8 +189,6 @@
 
 
 
-
-
 <!-----------review___before____submission----------->
 <template name="review">
     <div class="page-header">
@@ -222,9 +219,7 @@
 
 
 
-
-
-<!-------template______monitor-------->
+<!----------template______monitor----------->
 <template name="monitor">
     <div class="page-header">
         <h3>Job Monitor</h3>
@@ -264,24 +259,72 @@
                 </td>
                 <!--action buttons-->
                 <td  style="width:140px">
-                    <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete Job">
+                    <button type="button" id="delete"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete Job">
                         <span class="fa fa-trash"></span>
                     </button>
 
+                    <!--warning for delete-->
+                    <div class="modal fade" id="delete_warning">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="modal-title" style="font-size: 1.5em">Are you sure you want to delete the job?</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Delete</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
-                    <button type="button" id="button_pause" class="btn"  data-toggle="tooltip" data-placement="top" title="Pause">
-                        <i class="fa fa-pause"></i>
-                    </button>
-
-
-
-                    <!--<button type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Stop">
+                    <button type="button" id="terminate" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Terminate">
                         <span class="fa fa-times-circle"></span>
-                    </button>  -->
+                    </button>
+                    <!--warning for teminate-->
+                    <div class="modal fade" id="terminate_warning">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="modal-title" style="font-size: 1.5em">Are you sure you want to terminate the job?</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Terminate</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
-                    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Comments">
+                    <button type="button" id="comments" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Comments">
                         <span class="fa fa-comment"></span>
                     </button>
+                    <!--input_comments-->
+                    <div class="modal fade" id="input_comment">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="modal-title" style="font-size: 1.5em">
+                                        <form>
+                                            <div class="form-group">
+                                                <label class="control-label">Comments</label>
+                                                <div><textarea class="form-control" rows="4" placeholder="Enter comments"></textarea></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="form-group">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-info" data-dismiss="modal">Submit</button>
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 </td>
             </tr>
         {{/each}}

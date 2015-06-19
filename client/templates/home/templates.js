@@ -23,26 +23,23 @@ Template.results.rendered = function() {
     })
 };
 
-Template.monitor.rendered = function(){
 
-};
-
-
-
+//for monitor(table)
 Template.monitor.rendered = function() {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
-
-    var state = 'resume';
-    $('#button_pause').on('click', function () {
-        if(state=='resume'){
-            state = 'pause';
-            $(this.i).attr('class', "fa fa-play");
-        }
-        else if(state=='pause'){
-            state = 'resume';
-            $(this.i).attr('class', "fa fa-pause");
-        }
     });
-}
+};
+Template.monitor.events({
+    'click #delete': function(){
+        $("#delete_warning").modal();
+    },
+
+    'click #terminate': function(){
+        $("#terminate_warning").modal();
+    },
+
+    'click #comments': function(){
+        $("#input_comment").modal();
+    }
+});

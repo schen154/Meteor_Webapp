@@ -1,0 +1,11 @@
+.main{
+    height: 880px;
+}
+
+.footer {
+    position:relative;
+    bottom: 0;
+    width: 100%;
+    padding: 0.7rem;
+    text-align: center;
+}

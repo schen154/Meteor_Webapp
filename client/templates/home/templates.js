@@ -1,3 +1,24 @@
+//for input url
+Template.url.events = {
+    'click #submitURL' : function () {
+        console.log("Recent url received!");
+        $('#submitURL').attr('disabled','true').val('loading...');
+        dataURL = $('#inputData').val();
+        Meteor.call('grabDataFiles', dataURL, function(err, respJson) {
+            if(err) {
+                window.alert("Error: " + err.reason);
+                console.log("error occured on receiving data on server. ", err );
+            } else {
+                console.log("respJson: ", respJson);
+            }
+            $('#submitURL').removeAttr('disabled').val('Submit');
+        });
+    }
+};
+
+
+
+//for multi-select
 Template.select.rendered = function() {
     $(".select").chosen({
         display_disabled_options: true,
@@ -9,19 +30,10 @@ Template.select.rendered = function() {
     });
 };
 
-Template.results.rendered = function() {
-    $('#view').on('click', function () {
-        var $btn = $(this).button('loading')
-    });
 
-    $('#copy').on('click', function () {
-        var $btn = $(this).button('loading')
-    });
 
-    $('#error').on('click', function () {
-        var $btn = $(this).button('loading')
-    })
-};
+
+
 
 
 //for monitor(table)
@@ -43,3 +55,20 @@ Template.monitor.events({
         $("#input_comment").modal();
     }
 });
+
+
+
+//for displaying results
+Template.results.rendered = function() {
+    $('#view').on('click', function () {
+        var $btn = $(this).button('loading')
+    });
+
+    $('#copy').on('click', function () {
+        var $btn = $(this).button('loading')
+    });
+
+    $('#error').on('click', function () {
+        var $btn = $(this).button('loading')
+    })
+};

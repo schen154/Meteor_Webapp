@@ -3,19 +3,17 @@ Template.url.events = {
     'click #submitURL' : function () {
         console.log("Recent url received!");
         $('#submitURL').attr('disabled','true').val('loading...');
-        var URLs = [
-            $('#inputData').val(),
-            $('#inputMeta').val()
-        ];
-        Meteor.call('grabDataFiles', URLs, function(err, output) {
-            if(err){
-                window.alert("Error: " + err.reason);
-                console.log("Error occured on receiving data on server. ", err);
-            } else {
-                console.log("Output: ", output);
-                Session.set("Files", output);
-            }
-            $('#submitURL').removeAttr('disabled').val('Submit');
+        _.each(['inputData', 'inputMeta'], function(elementId) {
+            Meteor.call('grabDataFile', $('#' + elementId).val(), function (err, output) {
+                if (err) {
+                    window.alert("Error: " + err.reason);
+                    console.log("Error occurred on receiving data on server. ", err);
+                } else {
+                    console.log("Output: ", output);
+                    Session.set(elementId, output);
+                }
+                $('#submitURL').removeAttr('disabled').val('Submit');
+            });
         });
     }
 };

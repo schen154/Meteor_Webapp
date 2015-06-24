@@ -24,4 +24,7 @@ aldeed:collection2
 aldeed:autoform
 mrt:chosen-package
 http
-dsyko:meteor-node-csv
+meteorhacks:npm
+
+
+npm-container

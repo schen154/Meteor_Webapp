@@ -11,7 +11,7 @@ Template.home.events({
 
     },
 
-    'click .list-group-item': function(event){
+    'click .list-group-item, .go-set-para': function(event){
         Session.set('step', $(event.target).attr('id'));
     }
 

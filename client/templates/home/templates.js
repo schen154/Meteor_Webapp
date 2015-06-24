@@ -3,13 +3,17 @@ Template.url.events = {
     'click #submitURL' : function () {
         console.log("Recent url received!");
         $('#submitURL').attr('disabled','true').val('loading...');
-        dataURL = $('#inputData').val();
-        Meteor.call('grabDataFiles', dataURL, function(err, respJson) {
-            if(err) {
+        var URLs = [
+            $('#inputData').val(),
+            $('#inputMeta').val()
+        ];
+        Meteor.call('grabDataFiles', URLs, function(err, output) {
+            if(err){
                 window.alert("Error: " + err.reason);
-                console.log("error occured on receiving data on server. ", err );
+                console.log("Error occured on receiving data on server. ", err);
             } else {
-                console.log("respJson: ", respJson);
+                console.log("Output: ", output);
+                Session.set("Files", output);
             }
             $('#submitURL').removeAttr('disabled').val('Submit');
         });
@@ -29,9 +33,6 @@ Template.select.rendered = function() {
         width: "35%"
     });
 };
-
-
-
 
 
 

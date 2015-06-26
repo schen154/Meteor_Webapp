@@ -1,0 +1,36 @@
+<html ng-app='app'>
+	<head>
+		<link rel="stylesheet" type="text/css" href="JSONParser.css">
+	</head>
+	<body>
+		<h5 class='Description'>Choose an algorithm. Once chosen, hover over
+		algorithm name following "Selected Algorithm:" for a description of the 
+		algorithm. Parameters can also be entered once an algorithm is chosen. 
+		Hover over parameter name for a description of the parameters and list of
+		legal options. Illegal parameters will be highlighted green. </h5>
+		<div ng-controller='FormController'>
+			<span>Select an Algorithm:</span>
+			<select ng-model='algChoice'>
+				<option ng-repeat='algName in algChoices' title={{algDescriptions[algName]}}>{{algName}}</option>
+			</select>
+			<div ng-if='algSelected'>
+				<br><span>Selected Algorithm: </span>
+				<span title={{algDescriptions[algChoice]}}><em>{{algChoice}}</em></span>
+				<form name='ParamsSelection'>
+					<div ng-repeat='type in param_types'>
+						<span title='{{params[type].Description}} Options: {{params[type].Options}}'>{{type}}</span>
+						<input ng-model='params[type].Input' required ng-class='{error: params[type].error}' ng-change='paramError(type)'>
+					</div>
+					<span>
+						<br><button ng-click='Submit()'>Submit</button>
+						<button ng-click='restoreDefaults()'>Reset Values</button>
+					</span>
+					<div ng-show='successShow'>JSON file created.</div>
+					<div ng-show='failureShow'>There was an error in your parameter entry.</div>
+				</form>
+			</div>
+		</div>	
+	<script src="http://code.angularjs.org/1.0.5/angular.js"></script>
+	<script src="JSONParser_module.js"></script>
+	</body>
+</html>

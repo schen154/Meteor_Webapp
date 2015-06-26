@@ -12,3 +12,11 @@
 .modal{
     padding-top:15%;
 }
+
+#view_details{
+    padding-top: 0%;
+}
+#details_content{
+    height: 100%;
+    width: 95%;
+}

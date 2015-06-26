@@ -18,6 +18,15 @@ Template.url.events = {
     }
 };
 
+//for inspect inputs
+Template.datainputs.events({
+    'click #go_set_para': function(){
+        Session.set('step', 'select');
+    }
+});
+
+
+
 
 
 //for multi-select
@@ -56,7 +65,6 @@ Template.monitor.events({
 });
 
 
-
 //for displaying results
 Template.results.rendered = function() {
     $('#view').on('click', function () {
@@ -69,5 +77,22 @@ Template.results.rendered = function() {
 
     $('#error').on('click', function () {
         var $btn = $(this).button('loading')
-    })
+    });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 };
+Template.results.events({
+    'click #delete': function(){
+        $("#delete_warning").modal();
+    },
+
+    'click #comments': function(){
+        $("#input_comment").modal();
+    },
+
+    'click #details': function(){
+        $("#view_details").modal();
+    }
+});

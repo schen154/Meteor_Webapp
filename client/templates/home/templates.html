@@ -329,7 +329,7 @@
                     </div>
                 </td>
                 <!--action buttons-->
-                <td  style="width:180px">
+                <td  style="width:195px">
                     <button type="button" id="delete"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete Job">
                         <span class="fa fa-trash"></span>
                     </button>
@@ -390,6 +390,37 @@
                                 <div class="form-group modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     <button type="button" class="btn btn-info" data-dismiss="modal">Submit</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                    <button type="button" id="inputs"  class="btn btn-info" data-toggle="tooltip" data-placement="top" title="View Inputs">
+                        <span class="fa fa-file-text"></span>
+                    </button>
+                    <!--viewing details of job inputs-->
+                    <div class="modal fade" id="view_inputs">
+                        <div class="modal-dialog" id="details_content">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="modal-title" style="font-size: 1.5em">Details</div>
+                                </div>
+                                <div class="modal-body">
+                                    <!--parameters overview-->
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h4>Job Parameters</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <!--a summary of inputs/parameters-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" autocomplete="off">
+                                        OK
+                                    </button>
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->

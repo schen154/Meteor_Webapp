@@ -59,8 +59,12 @@ Template.monitor.events({
         $("#terminate_warning").modal();
     },
 
-    'click #comments': function(){
+    'click #comments': function() {
         $("#input_comment").modal();
+    },
+
+    'click #inputs': function(){
+        $("#view_inputs").modal();
     }
 });
 

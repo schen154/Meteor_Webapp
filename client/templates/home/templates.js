@@ -15,8 +15,22 @@ Template.url.events = {
                 $('#submitURL').removeAttr('disabled').val('Submit');
             });
         });
+    },
+
+    'click input[id="submitURL"]': function () {
+        var file = $('#file').get(0).files[0];
+        var fileObj = dataFiles.insert(file);
+        console.log('Upload result: ', fileObj);
     }
+
+
+
+
+
+
 };
+
+
 
 //for inspect inputs
 Template.datainputs.events({

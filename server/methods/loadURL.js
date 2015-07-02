@@ -16,8 +16,14 @@ Meteor.methods({
         // Attach the parsed data file to it.
         newFile.attachData(result.content, {type: 'text/plain'});
 
-        // Give it a file name
-        newFile.name('elementID.txt');
+        //Get filename from URL
+        var origFileName = url.substring(url.lastIndexOf('/')+1);
+
+        //Current date
+        var currDate = (new Date()).valueOf();
+
+        // Give it a unique file name
+        newFile.name(origFileName+CurrDate+'.txt');
 
         // `dataFiles` is an `FS.Collection` instance defined in *FileStorage.js*
         dataFiles.insert(newFile);

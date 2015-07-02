@@ -14,7 +14,7 @@ Meteor.methods({
         var newFile = new FS.File();
 
         // Attach the parsed data file to it.
-        newFile.attachData(parsed, {type: 'text/plain'});
+        newFile.attachData(result.content, {type: 'text/plain'});
 
         // Give it a file name
         newFile.name('elementID.txt');

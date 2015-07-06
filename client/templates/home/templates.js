@@ -1,6 +1,6 @@
 //for input url
 Template.url.events = {
-    'click #submitURL' : function () {
+    'click #submitURL': function (){
         console.log("Recent url received!");
         $('#submitURL').attr('disabled','true').val('loading...');
         _.each(['inputData', 'inputMeta'], function(elementId) {
@@ -15,6 +15,7 @@ Template.url.events = {
                 $('#submitURL').removeAttr('disabled').val('Submit');
             });
         });
+        Session.set('step', 'datainputs');
     }
 };
 
@@ -42,6 +43,32 @@ Template.select.rendered = function() {
         width: "35%"
     });
 };
+Template.select.events({
+    'click #go_set_algo': function(){
+        Session.set('step', 'parameters');
+    }
+});
+
+
+
+
+//for algorithm parameters
+Template.parameters.events({
+   'click #go_review': function(){
+       Session.set('step', 'review');
+   }
+});
+
+
+
+
+
+//for review
+Template.review.events({
+    'click #go_to_monitor': function(){
+        Session.set('step', 'monitor');
+    }
+});
 
 
 

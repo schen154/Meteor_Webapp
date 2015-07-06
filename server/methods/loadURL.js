@@ -9,7 +9,7 @@ Meteor.methods({
         var parser = Meteor.npmRequire('csv-parse');
         var parsed = Async.wrap(parser)(result.content, {skip_empty_lines: true});
 
-        //---save the parsed file---
+        //-----save the parsed file-----
         // Create the FS.File instance
         var newFile = new FS.File();
 

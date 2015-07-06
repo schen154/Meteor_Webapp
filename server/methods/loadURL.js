@@ -1,6 +1,7 @@
 Meteor.methods({
     grabDataFile: function(url) {
         // Make synchronous http call
+        console.log("This doesn't print out!!  T^T");
         var result = Meteor.http.get(url, {timeout: 30000});
         if (result.statusCode != 200) {
             console.log("Response issue: ", result.statusCode);

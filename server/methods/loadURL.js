@@ -7,7 +7,24 @@ Meteor.methods({
             throw new Meteor.Error(result.statusCode);
         }
         var parser = Meteor.npmRequire('csv-parse');
-        var parsed = Async.wrap(parser)(result.content, {skip_empty_lines: true});
+        try{
+            //create parsed file
+            var parsed = Async.wrap(parser)(result.content, {skip_empty_lines: true});
+        }catch(err){
+            throw new Meteor.Error('csv-parse-fail', error.message);
+        }
+
+        //________ORIGINAL--CODE____________
+     /**var parsed = Async.wrap(parser)(result.content, {skip_empty_lines: true}, function(err, output){
+            if(err) {
+                throw new Meteor.Error('csv-parse-fail', err.message);
+            }else{
+                console.log(output);
+            }
+        });
+     */
+
+
 
         //-----save the parsed file-----
         // Create the FS.File instance

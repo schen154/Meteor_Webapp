@@ -4,13 +4,23 @@ Template.url.events = {
         console.log("Recent url received!");
         $('#submitURL').attr('disabled','true').val('loading...');
         _.each(['inputData', 'inputMeta'], function(elementId) {
-            Meteor.call('grabDataFile', $('#' + elementId).val(), function (err, output) {
-                if (err) {
+            Meteor.call('grabDataFile', $('#' + elementId).val(), function(err, output){
+                if(err){
                     window.alert("Error: " + err.reason);
                     console.log("Error occurred on receiving data on server. ", err);
-                } else {
+                }else{
                     console.log("Output: ", output);
                     Session.set(elementId, output);
+                    //analyze data
+                    Meteor.call('analyzeData', Session.get('inputData'), function(err, result){
+                        if(err){
+                            window.alert("Error: " + err.reason);
+                            console.log("Error occurred on analyzing data. ", err);
+                        }else{
+                            console.log("Missing Values: ", result);
+                            Session.set('missing', result);
+                        }
+                    });
                 }
                 $('#submitURL').removeAttr('disabled').val('Submit');
             });
@@ -22,10 +32,19 @@ Template.url.events = {
 
 
 //for inspect inputs
+Template.datainputs.rendered = function(){
+
+};
 Template.datainputs.events({
     'click #go_set_para': function(){
         Session.set('step', 'select');
     }
+
+    //'click #headingFour': function(){
+   //     _.each(['inputData', 'inputMeta'], function(elementId) {
+    //        console.log("Total number of missing values: ", Session.get(elementId));
+    //    });
+   // }
 });
 
 

@@ -1,5 +1,5 @@
 Meteor.methods({
-    grabDataFile: function(url) {
+    grabDataFile: function(url){
         // Make synchronous http call
         var result = Meteor.http.get(url, {timeout: 30000});
         if (result.statusCode != 200) {
@@ -11,7 +11,7 @@ Meteor.methods({
             //create parsed file
             var parsed = Async.wrap(parser)(result.content, {skip_empty_lines: true});
         }catch(err){
-            throw new Meteor.Error('csv-parse-fail', error.message);
+            throw new Meteor.Error('csv-parse-fail', err.message);
         }
 
         //________ORIGINAL--CODE____________
@@ -53,5 +53,16 @@ Meteor.methods({
 
         //return parsed file to client
         return parsed;
+    },
+
+
+    analyzeData: function(data){
+        var missing;
+        var totalNum = 0;
+        for(i = 0; i < data.length; i++){
+            missing = _.filter(data[i], function(string){return string.toLowerCase()=="na";});
+            totalNum = totalNum + _.size(missing);
+        }
+        return totalNum;
     }
 });

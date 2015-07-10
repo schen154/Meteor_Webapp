@@ -46,7 +46,7 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    immediate feedback
+                    {{summary}}
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
-                    basic analysis(might be immediate)
+                    {{basic}}
                 </div>
             </div>
         </div>
@@ -88,9 +88,7 @@
             </div>
             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                 <div class="panel-body">
-                    <script>
-                        document.getElementById("collapseFour").value = Session['missing'];
-                    </script>
+                    <pre>{{missingValues}}</pre>
                 </div>
             </div>
         </div>

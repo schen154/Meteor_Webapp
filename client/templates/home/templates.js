@@ -11,16 +11,20 @@ Template.url.events = {
                 }else{
                     console.log("Output: ", output);
                     Session.set(elementId, output);
-                    //analyze data
-                    Meteor.call('analyzeData', Session.get('inputData'), function(err, result){
-                        if(err){
-                            window.alert("Error: " + err.reason);
-                            console.log("Error occurred on analyzing data. ", err);
-                        }else{
-                            console.log("Missing Values: ", result);
-                            Session.set('missing', result);
-                        }
-                    });
+                    if(elementId=='inputData'){
+                        //calc total
+                        Meteor.call('analyzeData', output, function(err, result){
+                            if(err){
+                                window.alert("Error: " + err.reason);
+                                console.log("Error occurred on analyzing data", err);
+                            }else{
+                                console.log("Missing rows: ", result[0]);
+                                Session.set('missingRow', result[0]);
+                                Session.set('missingCol', result[1]);
+                                Session.set('totalNum', result[2]);
+                            }
+                        });
+                    }
                 }
                 $('#submitURL').removeAttr('disabled').val('Submit');
             });
@@ -33,18 +37,59 @@ Template.url.events = {
 
 //for inspect inputs
 Template.datainputs.rendered = function(){
-
 };
+Template.datainputs.helpers({
+    summary: function(){
+        var total = Session.get('totalNum');
+        if(total){
+            if(total!=0){
+                return "You have values missing. Click below to view details";
+            }else{
+                return "All good. Click below to view details";
+            }
+        }else{
+            return "Loading...";
+        }
+
+    },
+    basic: function(){
+        var data = Session.get('inputData');
+        if(data){
+            return "Your data has " + (_.size(data)) + " rows and " + (_.size(data[0])) + " columns.";
+        }else{
+            return "Loading...";
+        }
+    },
+    missingValues: function(){
+        var total = Session.get('totalNum');
+        var rows = Session.get('missingRow');
+        var columns = Session.get('missingCol');
+        var outputStr = "";
+        if(total){
+            console.log("Missing columns: ", columns);
+            for(i=0; i< _.size(rows); i++){
+                if(rows[i]!=0){
+                    var whichColumns = "";
+                    var rowNum = i+1;
+                    for(j=0; j<rows[i]; j++){
+                        whichColumns = whichColumns + " " + columns[i][j];
+                    }
+                    outputStr = outputStr + "Row " + rowNum + "\nNumber missing: " + rows[i] + ", " + "at column"
+                        + whichColumns + ".\n" ;
+                }
+            }
+            return "Total number of values missing: "+ total + ".\n"  + outputStr;
+        }else{
+            return "Loading...";
+        }
+
+
+    }
+});
 Template.datainputs.events({
     'click #go_set_para': function(){
         Session.set('step', 'select');
     }
-
-    //'click #headingFour': function(){
-   //     _.each(['inputData', 'inputMeta'], function(elementId) {
-    //        console.log("Total number of missing values: ", Session.get(elementId));
-    //    });
-   // }
 });
 
 

@@ -13,19 +13,6 @@ Meteor.methods({
         }catch(err){
             throw new Meteor.Error('csv-parse-fail', err.message);
         }
-
-        //________ORIGINAL--CODE____________
-     /**var parsed = Async.wrap(parser)(result.content, {skip_empty_lines: true}, function(err, output){
-            if(err) {
-                throw new Meteor.Error('csv-parse-fail', err.message);
-            }else{
-                console.log(output);
-            }
-        });
-     */
-
-
-
         //-----save the parsed file-----
         // Create the FS.File instance
         var newFile = new FS.File();
@@ -54,15 +41,20 @@ Meteor.methods({
         //return parsed file to client
         return parsed;
     },
-
-
     analyzeData: function(data){
-        var missing;
+        var missingCol;
         var totalNum = 0;
+        var rows = [];
+        var columns = [];
         for(i = 0; i < data.length; i++){
-            missing = _.filter(data[i], function(string){return string.toLowerCase()=="na";});
-            totalNum = totalNum + _.size(missing);
+            missingCol = _.map(data[i], function(str, index){return [_.contains(["na", "", "nan", "null"], str.toLowerCase().trim()), index]});
+            columns[i] = _.filter(missingCol, function(bool){return bool[0]});
+            rows[i] = _.size(columns[i]);
+            for(j=0; j<rows[i]; j++){
+                columns[i][j] = columns[i][j][1]+1;
+            }
+            totalNum = totalNum + rows[i];
         }
-        return totalNum;
+        return [rows, columns, totalNum];
     }
 });

@@ -20,3 +20,7 @@
     height: 100%;
     width: 95%;
 }
+
+.panel-body{
+    font-size: 1.2em;
+}

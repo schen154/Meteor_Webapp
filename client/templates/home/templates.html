@@ -115,13 +115,13 @@
             <div class="radio">
                 <div>
                     <label>
-                        <input type="radio" name="optionsRadios" value="option1" checked>
+                        <input id="classif"  type="radio" name="optionsRadios" value="option1" checked>
                         Classification
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input type="radio" name="optionsRadios" value="option2">
+                        <input id="reggre" type="radio" name="optionsRadios" value="option2">
                         Reggression
                     </label>
                 </div>
@@ -134,17 +134,7 @@
             <div class="form-group form-group-lg">
                 <label>Output Feature</label>
                 <div>
-                    <select class="select" data-placeholder="Select Output Feature">
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
-                        <option value="6">Option 6</option>
-                        <option value="7">Option 7</option>
-                        <option value="8">Option 8</option>
-                        <option value="9">Option 9</option>
-                        <option value="10">Option 10</option>
+                    <select id="selectOutput" class="select" data-placeholder="Select Output Feature">
                     </select>
                 </div>
             </div>
@@ -152,7 +142,7 @@
             <div class="form-group form-group-lg">
                 <label>Ignored Features</label>
                 <div>
-                    <select class="select" data-placeholder="Select Ignored Features" multiple>
+                    <select id="selectInput" class="select" data-placeholder="Select Ignored Features" multiple>
                         <option value="1">Option 1</option>
                         <option value="2">Option 2</option>
                         <option value="3">Option 3</option>

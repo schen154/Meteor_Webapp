@@ -106,7 +106,21 @@ Template.select.rendered = function() {
         height: "25%",
         width: "35%"
     });
+    $('#classif').on('click', function () {
+        console.log("testing");
+        var theData = Session.get('inputData');
+        var outputList = document.getElementById('selectOutput');
+        for(i=0; i<theData.length; i++){
+            console.log("test");
+            var item = document.createElement(theData[i][3]);
+            item.text = "Row " + i;
+            outputList.options.add(item);
+        }
+    });
 };
+
+
+
 Template.select.events({
     'click #go_set_algo': function(){
         Session.set('step', 'parameters');

@@ -112,8 +112,8 @@ Template.select.rendered = function() {
         var outputList = document.getElementById('selectOutput');
         for(i=0; i<theData.length; i++){
             console.log("test");
-            var item = document.createElement(theData[i][3]);
-            item.text = "Row " + i;
+            var item = document.createElement('option');
+            item.text = theData[i];
             outputList.options.add(item);
         }
     });

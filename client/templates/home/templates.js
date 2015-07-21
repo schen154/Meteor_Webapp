@@ -118,6 +118,16 @@ Template.select.rendered = function() {
         }
     });
 };
+Template.select.helpers({
+    features: function(){
+        var returnVal = [];
+        var theData = Session.get('inputData');
+        if (theData) {
+           returnVal = _.map(theData[0], function(colName) {return {"name": colName};});
+        }
+        return returnVal;
+    }
+});
 
 
 

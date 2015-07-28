@@ -33,7 +33,9 @@ Meteor.methods({
         var currDate = (new Date()).valueOf();
 
         // Give it a unique file name
-        newFile.name(origFileName+currDate+'.txt');
+        var fileName = origFileName+currDate;
+        Meteor.set('fileName', fileName);
+        newFile.name(fileName+'.txt');
 
         // `dataFiles` is an `FS.Collection` instance defined in *FileStorage.js*
         dataFiles.insert(newFile);

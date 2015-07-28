@@ -8,8 +8,10 @@ Meteor.methods({
         }
         var parser = Meteor.npmRequire('csv-parse');
         try{
+            var csvFile = result.content;
+            Meteor.set();
             //create parsed file
-            var parsed = Async.wrap(parser)(result.content, {skip_empty_lines: true});
+            var parsed = Async.wrap(parser)(csvFile, {skip_empty_lines: true});
         }catch(err){
             throw new Meteor.Error('csv-parse-fail', err.message);
         }
@@ -34,14 +36,13 @@ Meteor.methods({
 
         // Give it a unique file name
         var fileName = origFileName+currDate;
-        Meteor.set('fileName', fileName);
         newFile.name(fileName+'.txt');
 
         // `dataFiles` is an `FS.Collection` instance defined in *FileStorage.js*
         dataFiles.insert(newFile);
 
         //return parsed file to client
-        return parsed;
+        return [parsed, fileName];
     },
     analyzeData: function(data){
         var missingCol;

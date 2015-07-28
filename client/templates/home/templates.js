@@ -9,11 +9,13 @@ Template.url.events = {
                     window.alert("Error: " + err.reason);
                     console.log("Error occurred on receiving data on server. ", err);
                 }else{
-                    console.log("Output: ", output);
-                    Session.set(elementId, output);
+                    console.log("Output: ", output[0]);
+                    Session.set(elementId, output[0]);
+
                     if(elementId=='inputData'){
+                        Meteor.set('data_file', output[1]);
                         //calc total
-                        Meteor.call('analyzeData', output, function(err, result){
+                        Meteor.call('analyzeData', output[0], function(err, result){
                             if(err){
                                 window.alert("Error: " + err.reason);
                                 console.log("Error occurred on analyzing data", err);
@@ -24,6 +26,9 @@ Template.url.events = {
                                 Session.set('totalNum', result[2]);
                             }
                         });
+                    }
+                    else{
+                        Meteor.set('meta_file', meta_name);
                     }
                 }
                 $('#submitURL').removeAttr('disabled').val('Submit');

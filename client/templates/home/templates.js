@@ -106,13 +106,12 @@ Template.select.rendered = function() {
         height: "25%",
         width: "35%"
     });
-    $('#classif').on('click', function () {
-        console.log("testing");
+    $(function () {
         var theData = Session.get('inputData');
         var outputList = document.getElementById('selectOutput');
+        var item;
         for(i=0; i<theData.length; i++){
-            console.log("test");
-            var item = document.createElement('option');
+            item = document.createElement('option');
             item.text = theData[i];
             outputList.options.add(item);
         }

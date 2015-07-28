@@ -8,6 +8,12 @@
     width:60%;
 }
 
+/**for select features*/
+#selectOutput{
+    height: auto;
+    width: 100%;
+}
+
 /**for the modals at the monitor*/
 .modal{
     padding-top:15%;

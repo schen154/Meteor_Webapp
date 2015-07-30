@@ -9,13 +9,16 @@ Template.url.events = {
                     window.alert("Error: " + err.reason);
                     console.log("Error occurred on receiving data on server. ", err);
                 }else{
-                    console.log("Output: ", output[0]);
-                    Session.set(elementId, output[0]);
-
+                    console.log("Output: ", output.parsedFile);
+                    console.log("Output: ", output.name);
+                    Session.set(elementId, output.parsedFile);
+                    console.log('1');
                     if(elementId=='inputData'){
-                        Meteor.set('data_file', output[1]);
+                        console.log('2');
+                        Meteor.set('data_file', output.name);
+                        console.log('3');
                         //calc total
-                        Meteor.call('analyzeData', output[0], function(err, result){
+                        Meteor.call('analyzeData', output.parsedFile, function(err, result){
                             if(err){
                                 window.alert("Error: " + err.reason);
                                 console.log("Error occurred on analyzing data", err);
@@ -26,9 +29,10 @@ Template.url.events = {
                                 Session.set('totalNum', result[2]);
                             }
                         });
-                    }
-                    else{
-                        Meteor.set('meta_file', meta_name);
+                    }else{
+                        console.log('2');
+                        Meteor.set('meta_file', output.name);
+                        console.log('3');
                     }
                 }
                 $('#submitURL').removeAttr('disabled').val('Submit');
@@ -80,10 +84,10 @@ Template.datainputs.helpers({
                         whichColumns = whichColumns + " " + columns[i][j];
                     }
                     outputStr = outputStr + "Row " + rowNum + "\nNumber missing: " + rows[i] + ", " + "at column"
-                        + whichColumns + ".\n" ;
+                        + whichColumns + ".\name" ;
                 }
             }
-            return "Total number of values missing: "+ total + ".\n"  + outputStr;
+            return "Total number of values missing: "+ total + ".\name"  + outputStr;
         }else{
             return "Loading...";
         }

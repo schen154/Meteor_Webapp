@@ -2,14 +2,13 @@ Meteor.methods({
     grabDataFile: function(url){
         // Make synchronous http call
         var result = Meteor.http.get(url, {timeout: 30000});
-        if (result.statusCode != 200) {
+        if (result.statusCode != 200){
             console.log("Response issue: ", result.statusCode);
             throw new Meteor.Error(result.statusCode);
         }
+        var csvFile = result.content;
         var parser = Meteor.npmRequire('csv-parse');
         try{
-            var csvFile = result.content;
-            Meteor.set();
             //create parsed file
             var parsed = Async.wrap(parser)(csvFile, {skip_empty_lines: true});
         }catch(err){
@@ -20,9 +19,9 @@ Meteor.methods({
         var newFile = new FS.File();
 
         // Copy the data to a Uint8Array (attachData accepts strings but expects them to be URLs)
-        var uinta = new Uint8Array(result.content.length);
-        for(var i=0, j=result.content.length; i<j; i++) {
-            uinta[i] = result.content.charCodeAt(i);
+        var uinta = new Uint8Array(csvFile.length);
+        for(var i=0, j=csvFile.length; i<j; i++) {
+            uinta[i] = csvFile.charCodeAt(i);
         }
 
         // Attach the parsed data file to it.
@@ -36,13 +35,16 @@ Meteor.methods({
 
         // Give it a unique file name
         var fileName = origFileName+currDate;
-        newFile.name(fileName+'.txt');
+        newFile.name(fileName +'.txt');
 
-        // `dataFiles` is an `FS.Collection` instance defined in *FileStorage.js*
+        //`dataFiles` is an `FS.Collection` instance defined in *FileStorage.js*
         dataFiles.insert(newFile);
 
-        //return parsed file to client
-        return [parsed, fileName];
+        //return parsed file and file name
+        return{
+            parsedFile: parsed,
+            name: fileName
+        };
     },
     analyzeData: function(data){
         var missingCol;

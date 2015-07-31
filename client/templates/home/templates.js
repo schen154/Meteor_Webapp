@@ -12,12 +12,8 @@ Template.url.events = {
                     console.log("Output: ", output.parsedFile);
                     console.log("Output: ", output.name);
                     Session.set(elementId, output.parsedFile);
-                    console.log('1');
-                    Meteor.set('data_file', output.name);
                     if(elementId=='inputData'){
-                        console.log('2');
-                        Meteor.set('data_file', output.name);
-                        console.log('3');
+                        Session.set('data_file', output.name);
                         //calc total
                         Meteor.call('analyzeData', output.parsedFile, function(err, result){
                             if(err){
@@ -31,9 +27,7 @@ Template.url.events = {
                             }
                         });
                     }else{
-                        console.log('2');
-                        Meteor.set('meta_file', output.name);
-                        console.log('3');
+                        Session.set('meta_file', output.name);
                     }
                 }
                 $('#submitURL').removeAttr('disabled').val('Submit');

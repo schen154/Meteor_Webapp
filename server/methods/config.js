@@ -11,12 +11,12 @@ Meteor.methods({
         var meta_path = 'feature_metadata_path: ' + '../../../private/user_data/' + meta_name + '.txt\n';
         var data_label = 'data_label:';
         var ignored_features = 'to_drop';
-        var response_feature = 'response: ';
-        var mode = 'mode: ' ;
-        var vim_score = 'vim_score: ';
-        var ntree = 'ntree: ';
-        var mtyr = 'mtry: ' ;
-        var refuse_subsets = 'refuse_subsets: ';
-        var refuse_forests = 'refuse_forests: ';
+        var response_feature = 'response: ' + Session.get('selectOutput');
+        var mode = 'mode: ' + Session.get('mode_radio');
+        var vim_score = 'vim_score: MeanDecreaseAccuracy';
+        var ntree = 'ntree: ' + Session.get('paraNo1');
+        var mtry = 'mtry: ' + Session.get('paraNo2');
+        var refuse_subsets = 'refuse_subsets: ' + Session.get('paraNo3');
+        var refuse_forests = 'refuse_forests: ' + Session.get('paraNo4');
     }
 });

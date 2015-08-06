@@ -10,7 +10,7 @@ Template.url.events = {
                     console.log("Error occurred on receiving data on server. ", err);
                 }else{
                     console.log("Output: ", output.parsedFile);
-                    console.log("Output: ", output.name);
+                    console.log(elementId, output.name);
                     Session.set(elementId, output.parsedFile);
                     if(elementId=='inputData'){
                         Session.set('data_file', output.name);
@@ -136,7 +136,21 @@ Template.select.helpers({
 
 Template.select.events({
     'click #go_set_algo': function(){
+        console.log("Features received!");
+        $('#go_set_algo').attr('disabled','true').val('loading...');
+        var radioValue = document.getElementsByName('classif');
+        if(radioValue.checked){
+            Session.set('mode_radio', 'Classification');
+        }else{
+            Session.set('mode_radio', 'Regression');
+        }
+        _.each(['selectOutput', 'selectInput'], function(elementId){
+            Session.set(elementId, $('#' + elementId).val());
+        });
+        $('#submitURL').removeAttr('disabled').val('Submit');
         Session.set('step', 'parameters');
+        //print user's choices
+        console.log(Session.get('mode_radio'), Session.get('selectOutput'), Session.get('selectInput'));
     }
 });
 
@@ -146,6 +160,14 @@ Template.select.events({
 //for algorithm parameters
 Template.parameters.events({
    'click #go_review': function(){
+       console.log("Parameters received!");
+       $('#go_review').attr('disabled','true').val('loading...');
+       var para = document.getElementsByClassName("parameters");
+       for(var i = 0; i < para.length; i++){
+           Session.set('paraNo'+i, para[i].value);
+           console.log(Session.get('paraNo'+i));
+       }
+       $('#go_review').removeAttr('disabled').val('Submit');
        Session.set('step', 'review');
    }
 });
@@ -174,15 +196,12 @@ Template.monitor.events({
     'click #delete': function(){
         $("#delete_warning").modal();
     },
-
     'click #terminate': function(){
         $("#terminate_warning").modal();
     },
-
     'click #comments': function() {
         $("#input_comment").modal();
     },
-
     'click #inputs': function(){
         $("#view_inputs").modal();
     }
@@ -194,11 +213,9 @@ Template.results.rendered = function() {
     $('#view').on('click', function () {
         var $btn = $(this).button('loading')
     });
-
     $('#copy').on('click', function () {
         var $btn = $(this).button('loading')
     });
-
     $('#error').on('click', function () {
         var $btn = $(this).button('loading')
     });
@@ -211,11 +228,9 @@ Template.results.events({
     'click #delete': function(){
         $("#delete_warning").modal();
     },
-
     'click #comments': function(){
         $("#input_comment").modal();
     },
-
     'click #details': function(){
         $("#view_details").modal();
     }

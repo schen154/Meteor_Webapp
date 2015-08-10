@@ -79,10 +79,10 @@ Template.datainputs.helpers({
                         whichColumns = whichColumns + " " + columns[i][j];
                     }
                     outputStr = outputStr + "Row " + rowNum + "\nNumber missing: " + rows[i] + ", " + "at column"
-                        + whichColumns + ".\name" ;
+                        + whichColumns + ".\n" ;
                 }
             }
-            return "Total number of values missing: "+ total + ".\name"  + outputStr;
+            return "Total number of values missing: "+ total + ".\n"  + outputStr;
         }else{
             return "Loading...";
         }

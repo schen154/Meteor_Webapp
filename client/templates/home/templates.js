@@ -172,8 +172,9 @@ Template.parameters.events({
            Session.set('paraNo'+i, para[i].value);
            console.log(Session.get('paraNo'+i));
        }
-       var notes = $('#descripLabel').val;
+       var notes = $('#descripLabel').val();
        Session.set('descripLabel', notes);
+       console.log(notes);
        $('#go_review').removeAttr('disabled').val('Submit');
        Session.set('step', 'review');
    }

@@ -10,7 +10,7 @@ Template.url.events = {
                     console.log("Error occurred on receiving data on server. ", err);
                 }else{
                     console.log("Output: ", output.parsedFile);
-                    console.log(elementId, output.name);
+                    console.log(elementId, ' file name ', output.name);
                     Session.set(elementId, output.parsedFile);
                     if(elementId=='inputData'){
                         Session.set('data_file', output.name);
@@ -92,6 +92,8 @@ Template.datainputs.helpers({
 });
 Template.datainputs.events({
     'click #go_set_para': function(){
+        $('#go_set_para').attr('disabled','true').val('loading...');
+        $('#go_set_para').removeAttr('disabled').val('Submit');
         Session.set('step', 'select');
     }
 });
@@ -155,7 +157,7 @@ Template.select.events({
         $('#submitURL').removeAttr('disabled').val('Submit');
         Session.set('step', 'parameters');
         //print user's choices
-        console.log(Session.get('mode_radio'), Session.get('selectOutput'), Session.get('selectInput'));
+        console.log(Session.get('mode_radio'), Session.get('selectOutput'), Session.get('selectIgnored'));
     }
 });
 
@@ -185,8 +187,13 @@ Template.parameters.events({
 
 
 //for review
+Template.review.rendered = function(){
+
+};
 Template.review.events({
     'click #go_to_monitor': function(){
+        $('#go_to_monitor').attr('disabled','true').val('loading...');
+        $('#go_to_monitor').removeAttr('disabled').val('Submit');
         Session.set('step', 'monitor');
     }
 });
@@ -195,7 +202,7 @@ Template.review.events({
 
 
 //for monitor(table)
-Template.monitor.rendered = function() {
+Template.monitor.rendered = function(){
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });

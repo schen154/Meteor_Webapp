@@ -123,19 +123,6 @@ Template.select.rendered = function() {
         }
     });
 };
-Template.select.helpers({
-    features: function(){
-        var returnVal = [];
-        var theData = Session.get('inputData');
-        if (theData) {
-           returnVal = _.map(theData[0], function(colName) {return {"name": colName};});
-        }
-        return returnVal;
-    }
-});
-
-
-
 Template.select.events({
     'click #go_set_algo': function(){
         console.log("Features received!");
@@ -151,20 +138,36 @@ Template.select.events({
         });
 
         //get input features from output/ignored
-        //var notInput = _.union(Session.get('selectOutput'), Session.get('selectIgnored'));
-        //var input = _.without(Session.get, 0, 1)
+        var notInput = _.union(Session.get('selectOutput'), Session.get('selectIgnored'));
+        var theData = Session.get('inputData');
+        var allCol = _.map(theData[0], function(colName){return colName});
+        var input = _.difference(allCol, notInput);
+        Session.set('inputCol', input);
 
         $('#submitURL').removeAttr('disabled').val('Submit');
         Session.set('step', 'parameters');
         //print user's choices
-        console.log(Session.get('mode_radio'), Session.get('selectOutput'), Session.get('selectIgnored'));
+        console.log('mode: ', Session.get('mode_radio'), '\noutput: ', Session.get('selectOutput'),
+                    '\nignored: ', Session.get('selectIgnored'), '\ninput: ', Session.get('inputCol'));
+    }
+});
+Template.select.helpers({
+    features: function(){
+        var returnVal = [];
+        var theData = Session.get('inputData');
+        if(theData){
+            returnVal = _.map(theData[0], function(colName){return {"name": colName};});
+        }
+        return returnVal;
     }
 });
 
 
 
-
 //for algorithm parameters
+Template.parameters.rendered = function(){
+
+};
 Template.parameters.events({
    'click #go_review': function(){
        console.log("Parameters received!");

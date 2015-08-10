@@ -145,7 +145,7 @@
             <div class="form-group form-group-lg">
                 <label>Ignored Features</label>
                 <div>
-                    <select id="selectInput" class="select" data-placeholder="Select Ignored Features" multiple>
+                    <select id="selectIgnored" class="select" data-placeholder="Select Ignored Features" multiple>
                         {{#each features}}
                             {{> feature}}
                         {{/each}}
@@ -232,7 +232,7 @@
         <div class="form-group">
             <label class="col-md-1 control-label">Notes</label>
             <div class="col-md-6">
-                <textarea class="form-control" rows="4" placeholder="Additional Notes"></textarea>
+                <textarea id="descripLabel" class="form-control" rows="4" placeholder="Additional Notes"></textarea>
             </div>
         </div>
         <div class="form-group">

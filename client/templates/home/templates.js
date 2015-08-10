@@ -144,9 +144,14 @@ Template.select.events({
         }else{
             Session.set('mode_radio', 'Regression');
         }
-        _.each(['selectOutput', 'selectInput'], function(elementId){
+        _.each(['selectOutput', 'selectIgnored'], function(elementId){
             Session.set(elementId, $('#' + elementId).val());
         });
+
+        //get input features from output/ignored
+        //var notInput = _.union(Session.get('selectOutput'), Session.get('selectIgnored'));
+        //var input = _.without(Session.get, 0, 1)
+
         $('#submitURL').removeAttr('disabled').val('Submit');
         Session.set('step', 'parameters');
         //print user's choices
@@ -167,6 +172,8 @@ Template.parameters.events({
            Session.set('paraNo'+i, para[i].value);
            console.log(Session.get('paraNo'+i));
        }
+       var notes = $('#descripLabel').val;
+       Session.set('descripLabel', notes);
        $('#go_review').removeAttr('disabled').val('Submit');
        Session.set('step', 'review');
    }

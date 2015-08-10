@@ -9,8 +9,8 @@ Meteor.methods({
         var results = 'results_directory: ' + '../../../private/results/results_' + data_name + '.txt';
         var data_path = 'data_path: ' + '../../../private/user_data/' + data_name + '.txt';
         var meta_path = 'feature_metadata_path: ' + '../../../private/user_data/' + meta_name + '.txt';
-        var data_label = 'data_label:';
-        var ignored_features = 'to_drop';
+        var data_label = 'data_label:' + Session.get('descripLabel');
+        var ignored_features = 'to_drop:' + Session.get('selectIgnored');
         var response_feature = 'response: ' + Session.get('selectOutput');
         var mode = 'mode: ' + Session.get('mode_radio');
         var vim_score = 'vim_score: MeanDecreaseAccuracy';

@@ -39,13 +39,13 @@ A starting point for MeteorJS applications. Includes iron-router, Bootstrap 3, F
 
 1. Clone this repo to `<yourapp>`
 
-  `git clone https://github.com/Differential/meteor-boilerplate.git <yourapp>`
+  `https://github.com/schen154/Meteor_Webapp.git`
 
 2. Remove `.git`
 
   `cd <yourapp> && rm -rf .git`
 
-3. Start coding!
+3. Type `Meteor` in the command line to run!
 
 ## <a name="file-structure"></a> File Structure
 
